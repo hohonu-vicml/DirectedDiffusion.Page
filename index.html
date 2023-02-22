@@ -456,12 +456,12 @@ div[class^='image-gallery-slide-'] {
     <ul class="authors">
       <li><a href="https://www.linkedin.com/in/kurt-ma">Wan-Duo Kurt Ma*</a></li>
       <li><a href="https://research.google/people/JPLewis/">J. P. Lewis^</a></li>
-      <li><a href="https://people.wgtn.ac.nz/bastiaan.kleijn">W. Bastiaan Kleijn*</a></li>
+      <li><a href="https://people.wgtn.ac.nz/bastiaan.kleijn">W. Bastiaan Kleijn*^</a></li>
       <li><a href="https://research.google/people/ThomasLeung/">Thomas Leung^</a></li>
     </ul>
     <ul class="authors affiliations">
-      <li>*Victoria University of Wellington,Wellington, New Zealand</li>
-      <li>^Google Research Mountain View, USA</li>
+      <li>*Victoria University of Wellington, Wellington, New Zealand</li>
+      <li>^Google Research, Mountain View, USA</li>
     </ul>
    </div>
    <figure>
@@ -470,10 +470,11 @@ div[class^='image-gallery-slide-'] {
           onmouseover="this.src='assets/images/teaser-box.png';"
           onmouseout="this.src='assets/images/teaser.png';">
      <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-       Directed Diffusion (DD) shows the improved context consistency and
-       multi-object positioning by specifying the bounding box (green) from
-       user. The Stable Diffusion (SD) counterparts outlined in red are
-       typically missing the objects or having the wrong context instead.
+       Directed Diffusion (DD) allows the user to specify an approximate bounding box 
+	(shown in green with mouseover) for selected words in the prompt.
+       This provides improved multi-object positioning and context consistency. 
+       The Stable Diffusion (SD) counterparts (outlined in red) are
+       typically missing objects or have the wrong context.
      </figcaption>
    </figure>
    <h3><center>Abstract</center></h3>
@@ -512,9 +513,9 @@ div[class^='image-gallery-slide-'] {
 <h3>Background</h3>
 
 <p style="text-align:justify">
-There are notable issues regarding scene composition in Stable Diffusion. First
+There are notable issues regarding scene composition in Stable Diffusion (SD). First
 of all, it is difficult to individually control different objects' appearance using the prompt.
-Second, it is not possible to control an objects's location using the prompt.
+Second, it is not possible to control an object's location using the prompt.
 </p>
 
 Our work provides a method to direct object location in images generated with Stable Diffusion. 
@@ -525,8 +526,8 @@ This is achieved without any training or fine-tuning.
 <figure>
   <img class="center pixelated" src="assets/images/SD-problem_v3.png" style="display:inline-block;width:100%;">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    The LDM result. Prompt from left: <i>A bird landing on top of a house</i> (Note:
-    no house); <i>A bird flying over a house coming from the left</i> (Note: Difficult
+    SD results. Prompts from left: <i>A bird landing on top of a house</i> (Note:
+    no house); <i>A bird flying over a house coming from the left</i> (Note: difficult
     to judge the position); <i>A yellow Aston Martin DB5 on a bridge</i> (Note: no
     bridge); <i>A yellow Aston Martin DB5 on a bridge under flocks of birds</i> (Note:
     no bridge or birds)
@@ -536,7 +537,7 @@ This is achieved without any training or fine-tuning.
 <p style="text-align:justify">
 DD builds on the following observation:
 The overall position and shape of a synthesized objects appears near
-the beginning of the denoising process, while the final steps do not change this
+the beginning of the diffusion denoising process, while the final steps do not change this
 but keep refining the details.
 </p>
 
@@ -545,11 +546,11 @@ but keep refining the details.
   <img class="center pixelated" src="assets/images/SD-inter-render.png" style="display:inline-block;width:59%;">
   <img class="center pixelated" src="assets/images/ca.gif" style="display:inline-block;width:130%;position:relative;right:15%">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    Intermediate reconstruction and visualization of cross-attention
-    map. Prompt: <i>A cat sitting on a car.</i> (Top-left) VAE reconstruction from the
+    Intermediate reconstructions and visualizations of prompt token cross-attention
+    maps. Prompt: <i>A cat sitting on a car.</i> (Top-left) VAE reconstruction from the
     predicted noise at each step; (Bottom) The cross attention associated with the
-    words in the prompt. (Top-right) The highlighted frame with the step 50,40,25,0
-    for the reconstruction, and the step 50 and 0 for the cross-attention map.
+    words in the prompt. (Top-right) The highlighted frame with step 50,40,25,0
+    for the reconstruction, and step 50 and 0 for the cross-attention map.
   </figcaption>
 </figure>
 
@@ -563,7 +564,7 @@ but keep refining the details.
 
 <p style="text-align:justify">
 DD can be divided into two stages:
-Attention Editing and Convention SD Denoising.
+<i>Attention Editing</i> and <i>Convention SD Denoising</i>.
 In the Attention Editing stage, DD directs object position by manipulating activation in 
 the text guidance cross-attention layers. 
 </p>
@@ -572,22 +573,24 @@ the text guidance cross-attention layers.
 <figure>
   <img class="center pixelated" src="assets/images/DD-pipe-overview-v2.png" style="display:inline-block;width:120%;position:relative;right:5%">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    DD overview: DD injects attention into the cross-attetnion maps for directed prompt words
-    to direct the position of the corresponding objects in the early steps [T, T-N].
+    DD overview: DD injects attention into the cross-attention maps for directed prompt words
+    to direct the position of the corresponding objects in the early denoising steps [T, T-N].
   </figcaption>
 </figure>
 
 <p style="text-align:justify">
-<b>Attention Editing</b> is then <b><i>directly</i></b>
-strengthening and weakening the activation from cross-attention layers of
-transformer model with respect to the specific region. <i>Trailing attention
-maps</i> are those that do not correspond to words in the prompt. These play a central role in DD in establishing consistency between the subjects and the surounding environment shown in the image.
+<b>Attention Editing</b> <b><i>directly</i></b>
+strengthens and weakens the activations in a specified region of selected cross-attention maps . 
+<i>Trailing attention maps</i> are those that do not correspond to words in the prompt. These play a central role in establishing consistency between the subjects and the surrounding environment shown in the image.
+A selected number of trailing attention maps are edited in a similar way to the edits on 
+the prompt attention maps.
 </p>
 
 <figure>
   <img class="center pixelated" src="assets/images/DD-pipe-detailed-v2.png" style="display:inline-block;width:120%;position:relative;right:5%">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    The attention editor in detail: We inject the weight on top of the prompt attention maps ($\mathbf{M}_I$) and the trailing attention maps ($\mathbf{M}_T$).
+    The attention editor in detail. The grey circles in the strengthened attention maps represent
+    activation that is injected in the specified bounding box in the selected prompt attention maps ($\mathbf{M}_I$) and trailing attention maps ($\mathbf{M}_T$). The areas outside the bounding box are attenuated.
   </figcaption>
 </figure>
 
@@ -610,9 +613,9 @@ In each row one of the objects (sun, dog, diver) is placed in one of the four qu
           onmouseover="this.src='assets/images/exp-four-q-box.png';"
           onmouseout="this.src='assets/images/exp-four-q.png';">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    DD results with a guided green bounding box comparing SD outlined in red.
-    Prompt: (Top) The sun shines on a house (Middle) A dog diving into the pool
-    (Bottom) A diver swimming through a school of fish.
+    DD results directed by the green bounding box (mouseover) compared with a SD result for the same prompt (outlined in red).
+    Prompt: (Top) <i>The sun shines on a house</i> (Middle) <i>A dog diving into the pool</i>
+    (Bottom) <i>A diver swimming through a school of fish.</i>
   </figcaption>
 </figure>
 
@@ -628,8 +631,8 @@ Here one of the objects (cat, stone castle, dog) is moved from left to right acr
           onmouseover="this.src='assets/images/exp-sliding-box.png';"
           onmouseout="this.src='assets/images/exp-sliding.png';">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    DD results shown with a green guiding bounding box comparing to the SD result outlined in red.
-    (Please zoom in if the green or red box is not visible.)
+    DD results directed by the green bounding box (mouseover) compared with a SD result for the same prompt (outlined in red).
+    Please zoom in if the green or red box is not visible.
     Prompt: (Top) <i>A cat sitting on a car</i>; (Middle) <i>A stone castle surrounded by
     lakes and trees</i> (Bottom) <i>A dog hiding behind the chair.</i>
   </figcaption>
@@ -638,11 +641,12 @@ Here one of the objects (cat, stone castle, dog) is moved from left to right acr
 <h3 style="position:relative;right:25%">Key Results - Two bounding boxes</h3>
 
 <p style="text-align:justify">
-  The composition failure for SD is specifically mentioned on
-  the <a style="text-decoration:none;"
+  "Compositionality" is a well known failure for SD, e.g. the 
+  <a style="text-decoration:none;"
   href="https://huggingface.co/CompVis/stable-diffusion-v-1-4-original">Huggingface</a>
-  (e.g., cube and sphere). Here we guide the SD with two bounding boxes for the
-  sphere and the cube respectively.
+  page specifically mentions the example of “A red cube on top of a blue sphere”.
+  Here we use DD to successfully produce this example, 
+  by using two bounding boxes for the sphere and cube respectively.
 
 </p>
 
@@ -656,7 +660,7 @@ Here one of the objects (cat, stone castle, dog) is moved from left to right acr
     Prompt: <i>A red cube above a blue sphere.</i>
     Top row: SD results.
     Bottom row: DD results with the cube, sphere position directed by two bounding boxes (shown in green).
-    The results at each column share the  same random seed. 
+    The results in each column share the same random seed. 
   </figcaption>
 </figure>
 
@@ -668,11 +672,11 @@ Here one of the objects (cat, stone castle, dog) is moved from left to right acr
 
 <p style="margin-bottom: 4%; margin-top: -2%">
 
-We summarize the contribution of Directed Diffusion:
+We summarize the contributions of Directed Diffusion:
 
 <ul>
   <li> <b>Storytelling</b>: Our method is a first step towards storytelling by providing consistent control over the positioning of multiple objects. </li>
-  <li> <b>Compositionality</b>: It provides an alternate and direct approach to ''compositionality'' by providing explict positional control. </li>
+  <li> <b>Compositionality</b>: It provides an alternate and direct approach to ''compositionality'' by providing explicit positional control. </li>
   <li> <b>Consistency</b>: The positioned objects seamlessly and consistently fit in the environment with natural lighting, cast shadows, etc., rather than appearing as a splice from another image.</li>
   <li> <b>Simplicity</b>: Our method requires no fine tuning or other optimization, and can be added to an existing text-driven diffusion model with cross-attention guidance with only a few lines of code. </li>
 </ul>
