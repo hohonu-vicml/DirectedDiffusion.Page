@@ -549,8 +549,11 @@ but keep refining the details.
     Intermediate reconstructions and visualizations of prompt token cross-attention
     maps. Prompt: <i>A cat sitting on a car.</i> (Top-left) VAE reconstruction from the
     predicted noise at each step; (Bottom) The cross attention associated with the
-    words in the prompt. (Top-right) The highlighted frame with step 50,40,25,0
-    for the reconstruction, and step 50 and 0 for the cross-attention map.
+    six words in the prompt; (Top-right) The denoising progress at steps 50,40,25,0.
+    The cat's position and shape is established early in the denoising, as seen
+    in the red box at step 40;
+    (Middle-right) The initial (step 50) and final (step 0) cross-attention maps for each
+    word in the prompt.
   </figcaption>
 </figure>
 
