@@ -470,9 +470,9 @@ div[class^='image-gallery-slide-'] {
           onmouseover="this.src='assets/images/teaser-box.png';"
           onmouseout="this.src='assets/images/teaser.png';">
      <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-       Directed Diffusion (DD) allows the user to specify an approximate bounding box 
+       Directed Diffusion (DD) allows the user to specify an approximate bounding box
 	(shown in green with mouseover) for selected words in the prompt.
-       This provides improved multi-object positioning and context consistency. 
+       This provides improved multi-object positioning and context consistency.
        The Stable Diffusion (SD) counterparts (outlined in red) are
        typically missing objects or have the wrong context.
      </figcaption>
@@ -518,7 +518,7 @@ of all, it is difficult to individually control different objects' appearance us
 Second, it is not possible to control an object's location using the prompt.
 </p>
 
-Our work provides a method to direct object location in images generated with Stable Diffusion. 
+Our work provides a method to direct object location in images generated with Stable Diffusion.
 This is achieved without any training or fine-tuning.
 <!-- (and potentially other text-to-image methods that use text guidance through cross attention).-->
 <p>
@@ -568,8 +568,8 @@ but keep refining the details.
 <p style="text-align:justify">
 DD can be divided into two stages:
 <i>Attention Editing</i> and <i>Convention SD Denoising</i>.
-In the Attention Editing stage, DD directs object position by manipulating activation in 
-the text guidance cross-attention layers. 
+In the Attention Editing stage, DD directs object position by manipulating activation in
+the text guidance cross-attention layers.
 </p>
 
 <p style="margin-bottom: 4%; margin-top: -2%">
@@ -583,9 +583,9 @@ the text guidance cross-attention layers.
 
 <p style="text-align:justify">
 <b>Attention Editing</b> <b><i>directly</i></b>
-strengthens and weakens the activations in a specified region of selected cross-attention maps . 
+strengthens and weakens the activations in a specified region of selected cross-attention maps .
 <i>Trailing attention maps</i> are those that do not correspond to words in the prompt. These play a central role in establishing consistency between the subjects and the surrounding environment shown in the image.
-A selected number of trailing attention maps are edited in a similar way to the edits on 
+A selected number of trailing attention maps are edited in a similar way to the edits on
 the prompt attention maps.
 </p>
 
@@ -644,11 +644,11 @@ Here one of the objects (cat, stone castle, dog) is moved from left to right acr
 <h3 style="position:relative;right:25%">Key Results - Two bounding boxes</h3>
 
 <p style="text-align:justify">
-  "Compositionality" is a well known failure case for SD, e.g. the 
+  "Compositionality" is a well known failure case for SD, e.g. the
   <a style="text-decoration:none;"
   href="https://huggingface.co/CompVis/stable-diffusion-v-1-4-original">Huggingface</a>
   page specifically mentions the example of “A red cube on top of a blue sphere”.
-  Here we use DD to successfully produce this example, 
+  Here we use DD to successfully produce this example,
   by using two bounding boxes for the sphere and cube respectively.
 
 </p>
@@ -663,7 +663,7 @@ Here one of the objects (cat, stone castle, dog) is moved from left to right acr
     Prompt: <i>A red cube above a blue sphere.</i>
     Top row: SD results.
     Bottom row: DD results with the cube, sphere position directed by two bounding boxes (shown in green).
-    The results in each column share the same random seed. 
+    The results in each column share the same random seed.
   </figcaption>
 </figure>
 
@@ -683,6 +683,20 @@ We summarize the contributions of Directed Diffusion:
   <li> <b>Consistency</b>: The positioned objects seamlessly and consistently fit in the environment with natural lighting, cast shadows, etc., rather than appearing as a splice from another image.</li>
   <li> <b>Simplicity</b>: Our method requires no fine tuning or other optimization, and can be added to an existing text-driven diffusion model with cross-attention guidance with only a few lines of code. </li>
 </ul>
+</p>
+
+
+
+<h3>Societal Impact</h3>
+<p style="text-align:justify">
+The aim of this project is to extend the capability of text-to-image models to
+visual storytelling. In common with most other technologies, there is potential
+for misuse. In particular, generative models reflect the biases of their
+training data, and there is a risk that malicious parties can use text-to-image
+methods to generate misleading images. The authors believe that it is important
+that these risks be addressed. This might be done by penalizing malicious
+behavior though the introduction of appropriate laws, or by limiting the
+capabilities of generative models to serve this behavior.
 </p>
 
 
