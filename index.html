@@ -70,7 +70,7 @@ pa.n-header,
     }
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 180px) {
     .base-grid,
     .n-header,
     .n-byline,
@@ -80,10 +80,10 @@ pa.n-header,
         display: grid;
         justify-items: stretch;
         grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
-        grid-column-gap: 32px;
+        grid-column-gap: 56px;
     }
     .grid {
-        grid-column-gap: 32px;
+        grid-column-gap: 56px;
     }
 
 }
@@ -137,7 +137,6 @@ p {
   margin-top: 0;
   margin-bottom: 1em;
 }
-
 
 .pixelated {
     image-rendering: pixelated;
@@ -454,50 +453,55 @@ div[class^='image-gallery-slide-'] {
    <h2>Direct Control of Object Placement through Attention Guidance</h2>
    <div class="byline">
     <ul class="authors">
-      <li><a href="https://www.linkedin.com/in/kurt-ma">Wan-Duo Kurt Ma*</a></li>
-      <li><a href="https://research.google/people/JPLewis/">J. P. Lewis^</a></li>
-      <li><a href="https://people.wgtn.ac.nz/bastiaan.kleijn">W. Bastiaan Kleijn*^</a></li>
-      <li><a href="https://research.google/people/ThomasLeung/">Thomas Leung^</a></li>
+      <li><a href="https://www.linkedin.com/in/kurt-ma">Wan-Duo Kurt Ma<sup>1</sup></a></li>
+      <li><a href="https://research.google/people/JPLewis/">J. P. Lewis<sup>2*</sup></a></li>
+      <li><a href="https://scholar.google.co.in/citations?user=4zgNd2UAAAAJ&hl=en">Avisek Lahiri<sup>2</sup></a></li>
+      <li><a href="https://research.google/people/ThomasLeung/">Thomas Leung<sup>2</sup></a></li>
+      <li><a href="https://people.wgtn.ac.nz/bastiaan.kleijn">W. Bastiaan Kleijn<sup>1,2</sup></a></li>
     </ul>
     <ul class="authors affiliations">
-      <li>*Victoria University of Wellington, Wellington, New Zealand</li>
-      <li>^Google Research, Mountain View, USA</li>
+      <li><sup>1</sup> Victoria University of Wellington, Wellington, New Zealand</li>
+      <li><sup>2</sup> Google Research, Mountain View, USA</li>
+      <li><sup>*</sup> Current affiliation: NVIDIA Research</li>
     </ul>
    </div>
    <figure>
-     <img class="center pixelated" src="assets/images/teaser.png"
+     <img class="center pixelated" src="assets/images/teaser-cropped-4.png"
           style="display:inline-block;width:150%;position:relative;right:25%"
-          onmouseover="this.src='assets/images/teaser-box.png';"
-          onmouseout="this.src='assets/images/teaser.png';">
+          onmouseover="this.src='assets/images/teaser-cropped-4.png';"
+          onmouseout="this.src='assets/images/teaser-cropped-4.png';">
      <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-       Directed Diffusion (DD) allows the user to specify an approximate bounding box
-	(shown in green with mouseover) for selected words in the prompt.
-       This provides improved multi-object positioning and context consistency.
-       The Stable Diffusion (SD) counterparts (outlined in red) are
-       typically missing objects or have the wrong context.
+       <b>Directed Diffusion (DD)</b> augments denoising diffusion text-to-image
+       generation by allowing the position of specified objects to be controlled
+       with user-specified bounding boxes (highlighted in red). (Left) DD
+       generates specified objects (insect robot, cat) placed according to the
+       given bounding boxes. We can move a synthesized object (middle), and
+       place multiple objects in desired locations (right). All the directed
+       objects show the appropriate ``contextual'' interaction (e.g. shadows)
+       with the background.
      </figcaption>
    </figure>
    <h3><center>Abstract</center></h3>
    <p style="text-align:justify">
-   Text-guided diffusion models such as DALLE-2, IMAGEN, and Stable Diffusion
-   are able to generate an effectively endless variety of images given only a
-   short text prompt describing the desired image content. In many cases the
-   images are very high quality as well. However these models often struggle to
+   Text-guided diffusion models such as DALLE-2, Imagen, eDiff-I, and Stable
+   Diffusion are able to generate an effectively endless variety of images given
+   only a short text prompt describing the desired image content. In many cases
+   the images are of very high quality. However, these models often struggle to
    compose scenes containing several key objects such as characters in specified
-   positional relationships. Unfortunately, this capability
-   to <b><i>direct</i></b> the placement of characters and objects both
-   within and across images is crucial in storytelling, as recognized in the
-   literature on film and animation theory. In this work we take a particularly
-   straightforward approach to providing the needed direction, by injecting
-   ``activation'' at desired positions in the cross-attention maps corresponding
-   to the objects under control, while attenuating the remainder of the map. The
-   resulting approach is a step toward generalizing the applicability of
-   text-guided diffusion models beyond single images to collections of related
-   images, as in storybooks. To the best of our knowledge, our <b>Directed
-   Diffusion (DD)</b> method is the first diffusion technique that provides positional
-   control over multiple objects, while making use of an existing pre-trained
-   model and maintaining a coherent blend between the positioned objects and the
-   background. Moreover, it requires only a few lines to implement.</p>
+   positional relationships. The missing capability to ``direct'' the placement
+   of characters and objects both within and across images is crucial in
+   storytelling, as recognized in the literature on film and animation theory.
+   In this work, we take a particularly straightforward approach to providing
+   the needed direction. Drawing on the observation that the cross-attention
+   maps for prompt words reflect the spatial layout of objects denoted by those
+   words, we introduce an optimization objective that produces ``activation'' at
+   desired positions in these cross-attention maps. The resulting approach is a
+   step toward generalizing the applicability of text-guided diffusion models
+   beyond single images to collections of related images, as in storybooks.
+   Directed Diffusion provides easy high-level positional control over multiple
+   objects, while making use of an existing pre-trained model and maintaining a
+   coherent blend between the positioned objects and the background. Moreover,
+   it requires only a few lines to implement.
 </div>
 
 
@@ -526,7 +530,7 @@ This is achieved without any training or fine-tuning.
 <figure>
   <img class="center pixelated" src="assets/images/SD-problem_v3.png" style="display:inline-block;width:100%;">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    SD results. Prompts from left: <i>A bird landing on top of a house</i> (Note:
+    <b>SD results</b>. Prompts from left: <i>A bird landing on top of a house</i> (Note:
     no house); <i>A bird flying over a house coming from the left</i> (Note: difficult
     to judge the position); <i>A yellow Aston Martin DB5 on a bridge</i> (Note: no
     bridge); <i>A yellow Aston Martin DB5 on a bridge under flocks of birds</i> (Note:
@@ -572,28 +576,26 @@ In the Attention Editing stage, DD directs object position by manipulating activ
 the text guidance cross-attention layers.
 </p>
 
-<p style="margin-bottom: 4%; margin-top: -2%">
-<figure>
-  <img class="center pixelated" src="assets/images/DD-pipe-overview-v2.png" style="display:inline-block;width:120%;position:relative;right:5%">
-  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    DD overview: DD injects attention into the cross-attention maps for directed prompt words
-    to direct the position of the corresponding objects in the early denoising steps [T, T-N].
-  </figcaption>
-</figure>
 
 <p style="text-align:justify">
-<b>Attention Editing</b> <b><i>directly</i></b>
-strengthens and weakens the activations in a specified region of selected cross-attention maps .
-<i>Trailing attention maps</i> are those that do not correspond to words in the prompt. These play a central role in establishing consistency between the subjects and the surrounding environment shown in the image.
-A selected number of trailing attention maps are edited in a similar way to the edits on
-the prompt attention maps.
+Our <b>Attention Editing</b> <i>directly</i> strengthens and weakens the
+activations in a specified region of selected cross-attention maps through optimization.
+<i>Trailing attention maps</i> are those that do not correspond to words in the
+prompt. These play a central role in establishing consistency between the
+subjects and the surrounding environment shown in the image. The optimal number
+of trailing attention maps are found by minimizing our objective that
+contributes the best directed object in the prompt attention maps.
 </p>
 
 <figure>
-  <img class="center pixelated" src="assets/images/DD-pipe-detailed-v2.png" style="display:inline-block;width:120%;position:relative;right:5%">
+  <img class="center pixelated" src="assets/images/diagram-pipeline-v3.png" style="display:inline-block;width:150%;position:relative;right:25%">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    The attention editor in detail. The grey circles in the strengthened attention maps represent
-    activation that is injected in the specified bounding box in the selected prompt attention maps ($\mathbf{M}_I$) and trailing attention maps ($\mathbf{M}_T$). The areas outside the bounding box are attenuated.
+     Directed Diffusion (DD) pipeline overview: DD divides the denoising process into initial steps where Attention
+Editing is performed, followed by refinement steps using Conventional SD Denoising. The goal of the Attention Editing
+stage is to optimize the cross attention map for a directed word (red, outlined in green) to approximately match a target
+D in which neural “activation” has been injected with a Gaussian fall-off inside a bounding box specified by the user.
+The optimization is performed by adjusting a vector (a, green) that re-weights the trailing attention maps. Note that the
+optimization objective involves successive two denosing time steps. Please see the text for details.
   </figcaption>
 </figure>
 
@@ -604,45 +606,110 @@ the prompt attention maps.
 <!-- | |_) / _ \/ __| | | | | __/ __| -->
 <!-- |  _ <  __/\__ \ |_| | | |_\__ \ -->
 <!-- |_| \_\___||___/\__,_|_|\__|___/ -->
-<h3 style="position:relative;right:25%">Key Results - Four quadrants</h3>
-
+<h3 style="position:relative;right:25%">Key Results - One object: Four quadrants</h3>
 <p style="text-align:justify">
-In each row one of the objects (sun, dog, diver) is placed in one of the four quadrants of the image (top right, top left, bottom right, bottom left).
+  The following clip shows the directed object allocating in each of four image
+  quadrants as well as at the image center, with the directed object ``a large
+  cabin'', ``an insect robot'', and ``the sun''.
+
+</p>
+<figure>
+<video class="center"
+       style="display:inline-block;width:100%;position:relative;right:0%;top:-5%"
+       autoplay loop muted>
+  <source src="assets/images/web-4q.mov" type="video/mp4" />
+  <source src="movie.ogg" type="video/ogg" />
+  Your browser does not support the video tag.
+</video>
+<figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
+    DD results directed by the green bounding box compared with a SD result for
+    the same prompt. Prompt: (Left) <i>“A large cabin on top of a sunny mountain
+    in the style of Dreamworks artstation.</i> (Middle) <i>An insect robot
+    preparing a delicious meal and food in the kitchen.</i> (Right) <i>The sun
+    shines on a house.</i>
+</figcaption>
+</figure>
+
+
+<!--  ___ _ _    _ _         __      ___         _ -->
+<!-- / __| (_)__| (_)_ _  __ \ \    / (_)_ _  __| |_____ __ __ -->
+<!-- \__ \ | / _` | | ' \/ _` \ \/\/ /| | ' \/ _` / _ \ V  V / -->
+<!-- |___/_|_\__,_|_|_||_\__, |\_/\_/ |_|_||_\__,_\___/\_/\_/ -->
+<!--                     |___/ -->
+
+<h3 style="position:relative;right:25%">Key Results - One object: Sliding window</h3>
+<p style="text-align:justify">
+The following clip shows the moving object from left to right. All the results
+are generated with a bounding box with the full image height and 40% of image
+width, with the directed object ``A stone castle'', ``A white cat'', ``A white dog''.
 </p>
 
 <figure>
-  <img class="center pixelated" src="assets/images/exp-four-q.png"
-          style="display:inline-block;width:150%;position:relative;right:25%"
-          onmouseover="this.src='assets/images/exp-four-q-box.png';"
-          onmouseout="this.src='assets/images/exp-four-q.png';">
-  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    DD results directed by the green bounding box (mouseover) compared with a SD result for the same prompt (outlined in red).
-    Prompt: (Top) <i>The sun shines on a house</i> (Middle) <i>A dog diving into the pool</i>
-    (Bottom) <i>A diver swimming through a school of fish.</i>
-  </figcaption>
+<video class="center"
+       style="display:inline-block;width:100%;position:relative;right:0%;top:-5%"
+       autoplay loop muted>
+  <source src="assets/images/web-window.mov" type="video/mp4" />
+  <source src="movie.ogg" type="video/ogg" />
+  Your browser does not support the video tag.
+</video>
+<figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
+    DD results directed by the green bounding box compared with a SD result for the same prompt.
+    Prompt: (Left) <i>A stone castle surrounded by lakes and trees</i> (Middle) <i>A white cat sitting on a car.</i>
+    (Right) <i>A white dog waking on the street in the city.</i>
+</figcaption>
 </figure>
 
-<h3 style="position:relative;right:25%">Key Results - Sliding window</h3>
+
+
+<!--  ___ _                           _   ___ _          _ -->
+<!-- | _ \ |__ _ __ ___ _ __  ___ _ _| |_| __(_)_ _  ___| |_ _  _ _ _  ___ -->
+<!-- |  _/ / _` / _/ -_) '  \/ -_) ' \  _| _|| | ' \/ -_)  _| || | ' \/ -_) -->
+<!-- |_| |_\__,_\__\___|_|_|_\___|_||_\__|_| |_|_||_\___|\__|\_,_|_||_\___| -->
+
+<h3 style="position:relative;right:25%">Key Results - Placement Finetuning</h3>
 
 <p style="text-align:justify">
-Here one of the objects (cat, stone castle, dog) is moved from left to right across the images.
-</p>
+In some cases the artist may wish to experiment with different object positions
+after obtaining a desirable image. However, when the object’s bounding box is
+moved DD may generate a somewhat different object. Our placement finetuning (PF)
+method addresses this problem, allowing the artist to immediately experiment
+with different positions for an object while keeping its identity, and without
+requiring any model fine-tuning or other optimization.
 
+</p>
 <figure>
-  <img class="center pixelated" src="assets/images/exp-sliding.png"
-          style="display:inline-block;width:150%;position:relative;right:25%"
-          onmouseover="this.src='assets/images/exp-sliding-box.png';"
-          onmouseout="this.src='assets/images/exp-sliding.png';">
-  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    DD results directed by the green bounding box (mouseover) compared with a SD result for the same prompt (outlined in red).
-    Please zoom in if the green or red box is not visible.
-    Prompt: (Top) <i>A cat sitting on a car</i>; (Middle) <i>A stone castle surrounded by
-    lakes and trees</i> (Bottom) <i>A dog hiding behind the chair.</i>
-  </figcaption>
+<video class="center" width="1200"
+       style="display:inline-block;width:100%;position:relative;right:0%"
+       autoplay loop muted>
+  <source src="assets/images/web-pf.mov" type="video/mp4" />
+  <source src="movie.ogg" type="video/ogg" />
+  Your browser does not support the video tag.
+</video>
+<figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
+The following experiment compares the sliding window result shown above
+(Middle), and the placement finetuning (Right) which takes the original DD
+result as the image source (Left).
+</figcaption>
 </figure>
+
+
+
+
+<!--  _____            ___ -->
+<!-- |_   _|_ __ _____| _ ) _____ _____ ___ -->
+<!--   | | \ V  V / _ \ _ \/ _ \ \ / -_|_-< -->
+<!--   |_|  \_/\_/\___/___/\___/_\_\___/__/ -->
 
 <h3 style="position:relative;right:25%">Key Results - Two bounding boxes</h3>
 
+
+
+<p style="text-align:justify">
+   It is often necessary to directly control the position
+and interaction of two objects, as in the case where a character is interacting with another character or object in some
+specified environment, however control over exact placement of background environment objects is rarely necessary or
+   desirable.
+</p>
 <p style="text-align:justify">
   "Compositionality" is a well known failure case for SD, e.g. the
   <a style="text-decoration:none;"
@@ -650,42 +717,144 @@ Here one of the objects (cat, stone castle, dog) is moved from left to right acr
   page specifically mentions the example of “A red cube on top of a blue sphere”.
   Here we use DD to successfully produce this example,
   by using two bounding boxes for the sphere and cube respectively.
+</p>
 
+
+
+<video class="center" width="1200"
+       style="display:inline-block;width:100%;position:relative;right:0%"
+       autoplay loop muted>
+  <source src="assets/images/web-sphere-cube.mov" type="video/mp4" />
+  <source src="movie.ogg" type="video/ogg" />
+  Your browser does not support the video tag.
+</video>
+
+<video class="center" width="1200"
+       style="display:inline-block;width:100%;position:relative;right:0%"
+       autoplay loop muted>
+  <source src="assets/images/web-bear.mov" type="video/mp4" />
+  <source src="movie.ogg" type="video/ogg" />
+  Your browser does not support the video tag.
+</video>
+
+
+
+<h3 style="position:relative;right:25%">Comparison - Methods validation</h3>
+
+<p style="text-align:justify">
+we showcase our results alongside the results obtained from the recommended
+configurations from the BLD Avrahami et al. [2022a], and the public Composable
+Diffusion (CD) Nan et al. [2022], implementations of BoxDiff Xie et al. [2023] and GLIGEN Li et
+al. [2023].
+
+The results are picked from a list of experiments from different random seeds
+with the best-of-k image rule subjectively. Please refer to our paper and the
+appendix for more detail and the comprehensive comparisons.
+</p>
+
+<b>Scene compositionality</b>
+
+<p style="text-align:justify">
+Our results demonstrate better fidelity to the prompt (castle with fog, pond is
+dark) and less information blending between objects (e.g., church and mountain
+are not pink).
 </p>
 
 <figure>
-  <img class="center pixelated" src="assets/images/exp-cube-sphere.png"
-          style="display:inline-block;width:150%;position:relative;right:25%"
-          onmouseover="this.src='assets/images/exp-cube-sphere-box.png';"
-          onmouseout="this.src='assets/images/exp-cube-sphere.png';">
-<!--  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;"> -->
+  <img class="center pixelated" src="assets/images/exp-app-comp-v3.png" style="display:inline-block;width:100%;position:relative;right:0%">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    Prompt: <i>A red cube above a blue sphere.</i>
-    Top row: SD results.
-    Bottom row: DD results with the cube, sphere position directed by two bounding boxes (shown in green).
-    The results in each column share the same random seed.
+    <b>Composition comparison</b>: Results from CD, GLIGEN, BOXDIFF, and our DD. The
+directed object is highlighted in bold in the prompt and its bounding box is
+shown in green (except for CD, which does not support position guidance). Please
+enlarge to see details including the bounding box.
   </figcaption>
 </figure>
 
 
+<b>One-Masking interaction</b>
+
+<p style="text-align:justify">
+In our results it is evident that DD generates strong and realistic interactions
+between the directed object and the background, including the man touching the
+gravestone, the shadows cast on the grass, the occlusion of the volcano by the
+horse. Oh no, the man’s hand that catches on fire :)
 </p>
 
+<figure>
+  <img class="center pixelated" src="assets/images/exp-app-mask-v3.png" style="display:inline-block;width:100%;position:relative;right:0%">
+  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
+    <b>Masking comparison</b>:  Results from CD, GLIGEN, BOXDIFF, and our DD. The
+directed object is highlighted in bold in the prompt and its bounding box is
+shown in green (except for CD, which does not support position guidance). Please
+enlarge to see details including the bounding box. BLD images are reproduced
+from Avrahami et al. [2022a].
+  </figcaption>
+</figure>
 
+
+<h3 style="position:relative;right:25%">Comparison: Object interaction from prompt verbs</h3>
+
+The following figure showcases the ability of DD to (sometimes) convey
+interaction between objects. The figure compares two prompts: "A white dog and a
+red ball" and "A white dog chasing a red ball." While both results show the
+white dog and red ball consistently, it is evident that the “chasing” prompt
+better conveys the action of this verb, e.g. the dog is running rather than
+sitting.
+
+<figure>
+  <img class="center pixelated" src="assets/images/exp-chasing.jpg" style="display:inline-block;width:100%;position:relative;right:0%">
+  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
+   Results of the prompt “a white dog S* a red ball”, where the token S* is
+replaced by “and” or “chasing” in the first row and second row, respectively. In
+the second row the dog more frequently appears to be running rather than
+sitting, consistent with the verb “chasing”. Note the results of each column
+share the same random seed.
+  </figcaption>
+</figure>
+
+
+
+
+
+
+<!--   ___         _       _ _         _   _ -->
+<!--  / __|___ _ _| |_ _ _(_) |__ _  _| |_(_)___ _ _ -->
+<!-- | (__/ _ \ ' \  _| '_| | '_ \ || |  _| / _ \ ' \ -->
+<!--  \___\___/_||_\__|_| |_|_.__/\_,_|\__|_\___/_||_| -->
 <h3>Contribution</h3>
-
 <p style="margin-bottom: 4%; margin-top: -2%">
-
 We summarize the contributions of Directed Diffusion:
-
 <ul>
   <li> <b>Storytelling</b>: Our method is a first step towards storytelling by providing consistent control over the positioning of multiple objects. </li>
   <li> <b>Compositionality</b>: It provides an alternate and direct approach to ''compositionality'' by providing explicit positional control. </li>
-  <li> <b>Consistency</b>: The positioned objects seamlessly and consistently fit in the environment with natural lighting, cast shadows, etc., rather than appearing as a splice from another image.</li>
-  <li> <b>Simplicity</b>: Our method requires no fine tuning or other optimization, and can be added to an existing text-driven diffusion model with cross-attention guidance with only a few lines of code. </li>
+  <li> <b>Consistency</b>: The positioned objects seamlessly and consistently
+    fit in the environment, rather than appearing as a splice from another image
+with inconsistent interaction (shadows, lighting, etc.) This consistency is due
+to two factors. First, we use a simple bounding box to position and allow the
+denoising diffusion process to fill in the details, whereas specifying position
+with a pixel-space mask runs the risk that it may be inconsistent with the shape
+and position implicit in the early denoising results. Second, subsequent
+diffusion steps operate on the entire image and seamlessly produce consistent
+lighting, etc.</li>
+  <li> <b>Simplicity</b>: Image editing methods for text-to-image models often
+require detailed masks, depth maps, or other precise guidance information. This
+information is not available when synthesizing images ab initio, and it would be
+    laborious to create. Our method allows the user to control the desired locations
+of objects simply by specifying approximate bounding boxes. From a computational
+point of view, our method requires no training or fine tuning, and can be added
+to an existing text-driven diffusion model with cross-attention guidance with
+only a few lines of code. It requires a simple optimization of a small weight
+vector $\mathbf{a} ∈ \mathbb{R}^d$, $d < 77$, which does not significantly
+increase the overall synthesis time. </li>
 </ul>
 </p>
 
 
+
+<!--  _    _       _ _        _   _ -->
+<!-- | |  (_)_ __ (_) |_ __ _| |_(_)___ _ _ -->
+<!-- | |__| | '  \| |  _/ _` |  _| / _ \ ' \ -->
+<!-- |____|_|_|_|_|_|\__\__,_|\__|_\___/_||_| -->
 <h3>Limitations</h3>
 <p style="text-align:justify">
 While Directed Diffusion can be used to address Stable Diffusion's problem with composing multiple objects, it inherits Stable Diffusion's other limitations -- in particular the need for experimentation with prompts and hyperparameters.
@@ -708,22 +877,47 @@ capabilities of generative models to serve this behavior.
 </p>
 
 
-<h3>Code (NEW)</h3>
-<p>
-Our DD implementation has been released (<a href="https://github.com/hohonu-vicml/DirectedDiffusion">link</a>). 
-Additionally, we also released an online demo app on Huggingface Space running on A10 GPU (<a href="https://huggingface.co/spaces/hohonu-vicml/DirectedDiffusion">link</a>).
-Feel free to contact us if you have comments and suggestions!
+
+<!--   ___         _ -->
+<!--  / __|___  __| |___ -->
+<!-- | (__/ _ \/ _` / -_) -->
+<!--  \___\___/\__,_\___| -->
+
+<h3>Code</h3>
+<p style="text-align:justify">
+Our public implementation
+(Github: <a href="https://github.com/hohonu-vicml/DirectedDiffusion">link</a>) is
+still associated with our first ArXiv version (DD ArXiv v1:
+<a href="https://arxiv.org/abs/2302.13153v1">link</a>). This version has the
+core method injecting the Gaussian weight map into the cross-attention map as
+one of our main motivation in the paper. We will soon provide the online demo
+through Huggingface Space in the near future. Feel free to contact us if you
+have comments and suggestions!
+<!-- Additionally, we also released an online demo app on Huggingface Space running on A10 GPU (<a href="https://huggingface.co/spaces/hohonu-vicml/DirectedDiffusion">link</a>). -->
 </p>
-	
+
+
+<h3>Acknowledgements</h3>
+<p style="text-align:justify">
+We thank Jason Baldridge, and the anonymous reviewers for helpful feedback. We
+also thank Huggingface public project Diffusers providing efficient and reliable
+experiments.
+</p>
+
+<!--   ___ _ _        _   _ -->
+<!--  / __(_) |_ __ _| |_(_)___ _ _ -->
+<!-- | (__| |  _/ _` |  _| / _ \ ' \ -->
+<!--  \___|_|\__\__,_|\__|_\___/_||_| -->
+
 <h3>Citation</h3>
-<p>
+<p style="text-align:justify">
   For more details and additional results, <a href="https://arxiv.org/abs/2302.13153" style="text-decoration:none">read the full paper</a>.
 </p>
 <code>
   @misc{ma2023directed,<br/>
   <div style="padding-left: 5%; margin: 0">
       title={Directed Diffusion: Direct Control of Object Placement through Attention Guidance},<br/>
-      author={Wan-Duo Kurt Ma and J. P. Lewis and W. Bastiaan Kleijn and Thomas Leung},<br/>
+      author={Wan-Duo Kurt Ma and J. P. Lewis and Avisek Lahiri and W. Bastiaan Kleijn and Thomas Leung},<br/>
       year={2023},<br/>
       eprint={2302.13153},<br/>
       archivePrefix={arXiv},<br/>
