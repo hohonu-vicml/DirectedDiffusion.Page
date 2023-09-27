@@ -451,7 +451,7 @@ div[class^='image-gallery-slide-'] {
 <d-article>
 <div style="center">
    <div class="byline">
-   <h1 style="font-size:350%"><center>Directed Diffusion:</center></h1>
+   <h1 style="font-size:250%"><center>Directed Diffusion:</center></h1>
    <h2 style="font-size:180%"><center>Direct Control of Object Placement through Attention Guidance</center></h2>
     <ul class="authors">
       <li><a href="https://www.linkedin.com/in/kurt-ma">Wan-Duo Kurt Ma<sup>1</sup></a></li>
@@ -557,7 +557,7 @@ but keep refining the details.
 <figure>
   <img class="center pixelated" src="assets/images/recons.gif" style="display:inline-block;width:39%;">
   <img class="center pixelated" src="assets/images/SD-inter-render.png" style="display:inline-block;width:59%;">
-  <img class="center pixelated" src="assets/images/ca.gif" style="display:inline-block;width:130%;position:relative;right:15%">
+  <img class="center pixelated" src="assets/images/ca.gif" style="display:inline-block;width:100%;position:relative;right:0%">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
     Intermediate reconstructions and visualizations of prompt token cross-attention
     maps. Prompt: <i>A cat sitting on a car.</i> (Top-left) VAE reconstruction from the
@@ -597,7 +597,7 @@ contributes the best directed object in the prompt attention maps.
 </p>
 
 <figure>
-  <img class="center pixelated" src="assets/images/diagram-pipeline-v3.png" style="display:inline-block;width:150%;position:relative;right:25%">
+  <img class="center pixelated" src="assets/images/diagram-pipeline-v3.png" style="display:inline-block;width:100%;position:relative;right:0%">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
      Directed Diffusion (DD) pipeline overview: DD divides the denoising process into initial steps where Attention
 Editing is performed, followed by refinement steps using Conventional SD Denoising. The goal of the Attention Editing
@@ -615,7 +615,7 @@ optimization objective involves successive two denosing time steps. Please see t
 <!-- | |_) / _ \/ __| | | | | __/ __| -->
 <!-- |  _ <  __/\__ \ |_| | | |_\__ \ -->
 <!-- |_| \_\___||___/\__,_|_|\__|___/ -->
-<h3 style="position:relative;right:25%">Key Results - One object: Four quadrants</h3>
+<h3>Key Results - One object: Four quadrants</h3>
 <p style="text-align:justify">
   The following clip shows the directed object allocating in each of four image
   quadrants as well as at the image center, with the directed object ``a large
@@ -646,7 +646,7 @@ optimization objective involves successive two denosing time steps. Please see t
 <!-- |___/_|_\__,_|_|_||_\__, |\_/\_/ |_|_||_\__,_\___/\_/\_/ -->
 <!--                     |___/ -->
 
-<h3 style="position:relative;right:25%">Key Results - One object: Sliding window</h3>
+<h3>Key Results - One object: Sliding window</h3>
 <p style="text-align:justify">
 The following clip shows the moving object from left to right. All the results
 are generated with a bounding box with the full image height and 40% of image
@@ -675,7 +675,7 @@ width, with the directed object ``A stone castle'', ``A white cat'', ``A white d
 <!-- |  _/ / _` / _/ -_) '  \/ -_) ' \  _| _|| | ' \/ -_)  _| || | ' \/ -_) -->
 <!-- |_| |_\__,_\__\___|_|_|_\___|_||_\__|_| |_|_||_\___|\__|\_,_|_||_\___| -->
 
-<h3 style="position:relative;right:25%">Key Results - Placement Finetuning</h3>
+<h3>Key Results - Placement Finetuning</h3>
 
 <p style="text-align:justify">
 In some cases the artist may wish to experiment with different object positions
@@ -709,7 +709,7 @@ result as the image source (Left).
 <!--   | | \ V  V / _ \ _ \/ _ \ \ / -_|_-< -->
 <!--   |_|  \_/\_/\___/___/\___/_\_\___/__/ -->
 
-<h3 style="position:relative;right:25%">Key Results - Two bounding boxes</h3>
+<h3>Key Results - Two bounding boxes</h3>
 
 
 
@@ -748,7 +748,7 @@ specified environment, however control over exact placement of background enviro
 
 
 
-<h3 style="position:relative;right:25%">Comparison - Methods validation</h3>
+<h3>Comparison - Methods validation</h3>
 
 <p style="text-align:justify">
 we showcase our results alongside the results obtained from the recommended
@@ -801,7 +801,7 @@ from Avrahami et al. [2022a].
 </figure>
 
 
-<h3 style="position:relative;right:25%">Comparison: Object interaction from prompt verbs</h3>
+<h3>Comparison: Object interaction from prompt verbs</h3>
 
 The following figure showcases the ability of DD to (sometimes) convey
 interaction between objects. The figure compares two prompts: "A white dog and a
