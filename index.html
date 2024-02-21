@@ -1,501 +1,290 @@
-<!--
-  Copyright 2018 The Distill Template Authors
+<!DOCTYPE html>
+<html>
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
 
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
-<!doctype html>
+  <head>
 
-<style>
-.base-grid,
-pa.n-header,
-.n-byline,
-.n-title,
-.n-article,
-.n-footer {
-    display: grid;
-    justify-items: stretch;
-    grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
-    grid-column-gap: 8px;
-    border: 0;
+ <style>
+hr {
+        border: 0;
+    height: 1px;
+<!-- background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); -->
 }
-
-.grid {
-  display: grid;
-  grid-column-gap: 8px;
-}
-
-@media(min-width: 768px) {
-    .base-grid,
-    .n-header,
-    .n-byline,
-    .n-title,
-    .n-article,
-    .n-footer {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
-        grid-column-gap: 16px;
-    }
-
-    .grid {
-        grid-column-gap: 16px;
-    }
-}
-
-@media(min-width: 1000px) {
-    .base-grid,
-    .n-header,
-    .n-byline,
-    .n-title,
-    .n-article,
-    .n-footer {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
-        grid-column-gap: 16px;
-    }
-
-    .grid {
-        grid-column-gap: 16px;
-    }
-}
-
-@media (min-width: 180px) {
-    .base-grid,
-    .n-header,
-    .n-byline,
-    .n-title,
-    .n-article,
-    .n-footer {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
-        grid-column-gap: 56px;
-    }
-    .grid {
-        grid-column-gap: 56px;
-    }
-
-}
-
-/* unvisited link */
-a:link {
-  color: blue;
-}
-
-/* visited link */
-a:visited {
-  color: blue;
-}
-
-/* mouse over link */
-a:hover {
-  color: hotpink;
-}
-
-/* selected link */
-a:active {
-  color: blue;
-}
-
-.base-grid {
-  grid-column: screen;
-}
-
-/* default grid column assignments */
-.n-title > *  {
-    grid-column: text;
-}
-
-.n-article > *  {
-  grid-column: text;
-}
-
-.n-title {
-    padding: 2.5rem 0 0;
-}
-
-.l-page {
-    grid-column: page;
-}
-
-.l-article {
-    grid-column: text;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
-.pixelated {
-    image-rendering: pixelated;
-}
-
-strong {
-    font-weight: 600;
-    }
-
-
-/*------------------------------------------------------------------*/
-/* title */
-.n-title h1 {
-    font-family: "Barlow",system-ui,Arial,sans-serif;
-    color:#082333;
-    grid-column: text;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1.1em;
-    margin: 0 0 0;
-    text-align: center;
-}
-
-.n-title h2 {
-    font-family: "Barlow",system-ui,Arial,sans-serif;
-    color:#082333;
-    grid-column: text;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1.1em;
-    margin: 0 0 0;
-    text-align: center;
-}
-
-@media (min-width: 768px) {
-    .n-title h1 {
-        font-size: 50px;
-    }
-}
-
-
-.n-byline {
-  contain: style;
-  overflow: hidden;
-  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
-  font-size: 0.8rem;
-  line-height: 1.8em;
-  /* padding: 1.5rem 0; */
-  min-height: 1.8em;
-}
-
-.n-byline .byline {
-  grid-column: text;
-}
-
-.byline {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.grid {
-    display: grid;
-    grid-column-gap: 8px;
-}
-
-.hover_img {
-
-position: absolute;
-top: 0;
-left: 0;
-display: none;
-
-}
-
-@media (min-width: 768px) {
-.grid {
-    grid-column-gap: 16px;
-}
-}
-
-.n-byline p {
-  margin: 0;
-}
-
-.n-byline h3 {
-    font-size: 0.6rem;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
-    margin: 0;
-    text-transform: uppercase;
-}
-.n-byline .authors-affiliations {
-  grid-column-end: span 2;
-  grid-template-columns: 1fr 1fr;
-}
-
-ul.authors {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  contain: style;
-  overflow: hidden;
-  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
-  font-size: 1.2rem;
-  line-height: 1.8em;
-  padding: 1.5rem 0;
-  min-height: 1.8em;
-}
-ul.authors li {
-    padding: 0 0.5rem;
-    display: inline-block;
-}
-
-ul.authors sup {
-    color: rgb(126,126,126);
-}
-
-ul.authors.affiliations  {
-    margin-top: -2.5rem;
-}
-
-ul.authors.affiliations li {
-    color: rgb(126,126,126);
-}
-
-.preload { visibility: hidden; }
-
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.panorama-slideshow {
-  position: relative;
-}
-
-/* Hide the images by default */
-.panorama-slide {
-  display: none;
-}
-
-/* Hide the images by default */
-div[class^='image-gallery-slide-'] {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 25px;
-  transition: 0.1s ease;
-  border-radius: 0 2px 2px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-
-/* Next & previous buttons */
-.prev-image, .next-image {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  margin-left: -50px;
-  margin-right: -30px;
-  padding: 16px;
-  color: black;
-  font-weight: bold;
-  font-size: 40px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next-image {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-
-.prev-image:hover, .next-image:hover {
-  background-color: rgba(0,0,0,0.8);
-  color: white;
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-/* Style tab links */
-.tablink {
-  background-color: #fff;
-  color: black;
-  float: left;
-  outline: none;
-  cursor: pointer;
-  padding: 8px 5px;
-  font-size: 17px;
-  font-weight: bold;
-  border: none;
-
-}
-
-.tablink:hover {
-  background-color: #36373A;
-  color: white;
-}
-
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: white;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
-}
-
-@media screen and (min-width: 601px) {
-  .tablink {
-    font-size: 17px;
+.bottom-three {
+     margin-bottom: 1cm;
   }
-}
-
-@media screen and (max-width: 600px) {
-  .tablink {
-    font-size: 12px;
-  }
-}
 </style>
 
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Directed Diffusion: Direct Control of Object Placement through Attention Guidance
+    </title>
 
-<head>
-    <title>Directed Diffusion</title>
-    <script src="assets/page/template.v2.js"></script>
-    <meta property="og:title" content="Directed Diffusion">
-    <meta property="og:type" content="website">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <meta charset="utf8">
-    <script>
-        $(window).on( "load", function(){
-        $('.preload').attr('src', function(i,a){
-        $(this).attr('src','')
-            .removeClass('preload')
-            .attr('src', a);
-        });
-      });
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL">
     </script>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
     </script>
-    <script type="text/javascript"
-            src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script defer src="./static/js/fontawesome.all.min.js">
+    </script>
+    <script src="./static/js/bulma-carousel.min.js">
+    </script>
+    <script src="./static/js/bulma-slider.min.js">
+    </script>
+    <script src="./static/js/index.js">
     </script>
 </head>
-
 <body>
 
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true">
+      </span>
+      <span aria-hidden="true">
+      </span>
+      <span aria-hidden="true">
+      </span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/hohonu-vicml/">
+      <span class="icon">
+        <i class="fas fa-home">
+        </i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hohonu-vicml.github.io/Trailblazer.Page">
+            TrailBlazer
+          </a>
+          <!-- <a class="navbar-item" href="https://nerfies.github.io"> -->
+          <!--   Nerfies -->
+          <!-- </a> -->
+          <!-- <a class="navbar-item" href="https://latentfusion.github.io"> -->
+          <!--   LatentFusion -->
+          <!-- </a> -->
+          <!-- <a class="navbar-item" href="https://photoshape.github.io"> -->
+          <!--   PhotoShape -->
+          <!-- </a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
 
 
-<!--  ____             _             _              -->
-<!-- | __ )  ___  __ _(_)_ __  _ __ (_)_ __   __ _  -->
-<!-- |  _ \ / _ \/ _` | | '_ \| '_ \| | '_ \ / _` | -->
-<!-- | |_) |  __/ (_| | | | | | | | | | | | | (_| | -->
-<!-- |____/ \___|\__, |_|_| |_|_| |_|_|_| |_|\__, | -->
-<!--             |___/                       |___/  -->
-<d-article>
-<div style="center">
-   <div class="byline">
-   <h1 style="font-size:250%"><center>Directed Diffusion:</center></h1>
-   <h2 style="font-size:180%"><center>Direct Control of Object Placement through Attention Guidance</center></h2>
-    <ul class="authors">
-      <li><a href="https://www.linkedin.com/in/kurt-ma">Wan-Duo Kurt Ma<sup>1</sup></a></li>
-      <li><a href="https://research.google/people/JPLewis/">J. P. Lewis<sup>2*</sup></a></li>
-      <li><a href="https://scholar.google.co.in/citations?user=4zgNd2UAAAAJ&hl=en">Avisek Lahiri<sup>2</sup></a></li>
-      <li><a href="https://research.google/people/ThomasLeung/">Thomas Leung<sup>2</sup></a></li>
-      <li><a href="https://people.wgtn.ac.nz/bastiaan.kleijn">W. Bastiaan Kleijn<sup>1,2</sup></a></li>
-    </ul>
-    <ul class="authors affiliations">
-      <li><sup>1</sup> Victoria University of Wellington, Wellington, New Zealand</li>
-      <li><sup>2</sup> Google Research, Mountain View, USA</li>
-      <li><sup>*</sup> Current affiliation: NVIDIA Research</li>
-    </ul>
-   </div>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Directed Diffusion: Direct Control of Object Placement through Attention Guidance
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/kurt-ma/">Wan-Duo Kurt Ma
+              </a>
+              <sup>1
+              </sup>,&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.co.in/citations?user=4zgNd2UAAAAJ&hl=en">Avisek Lahiri
+              </a>
+              <sup>2
+              </sup>,&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a href="http://www.scribblethink.org/">J. P. Lewis
+              </a>
+              <sup>3
+              </sup>,&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://research.google/people/ThomasLeung/">Thomas Leung
+              </a>
+              <sup>2
+              </sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://people.wgtn.ac.nz/bastiaan.kleijn">W. Bastiaan Kleijn
+              </a>
+              <sup>1,2
+              </sup>
+            </span>
+          </div>
 
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <sup>1
+              </sup>Victoria University of Wellington,&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <sup>2
+              </sup>Google Research,&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <sup>3
+              </sup>NVIDIA Research
+            </span>
+          </div>
 
-</div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2302.13153.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf">
+                    </i>
+                  </span>
+                  <span>Paper
+                  </span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2302.13153"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv">
+                    </i>
+                  </span>
+                  <span>arXiv
+                  </span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=kEN-32wN-xQ"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-youtube">
+                    </i>
+                  </span>
+                  <span>Project
+                  </span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block"> -->
+              <!--   <a href="https://www.youtube.com/watch?v=P-PSkS7sNco" -->
+              <!--      class="external-link button is-normal is-rounded is-dark"> -->
+              <!--     <span class="icon"> -->
+              <!--         <i class="fab fa-youtube"></i> -->
+              <!--     </span> -->
+              <!--     <span>Result</span> -->
+              <!--   </a> -->
+              <!-- </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/hohonu-vicml/DirectedDiffusion"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github">
+                    </i>
+                  </span>
+                  <span>Code
+                  </span>
+                  </a>
+              </span>
+              <!-- demo Link. -->
+              <!-- <span class="link-block"> -->
+              <!--   <a href="https://huggingface.co/spaces/hohonu-vicml/Trailblazer" -->
+              <!--      class="external-link button is-normal is-rounded is-dark"> -->
+              <!--     <span class="icon"> -->
+              <!--       <i class="far fa-images"></i> -->
+              <!--     </span> -->
+              <!--     <span>Demo(NEW!)</span> -->
+              <!--     </a> -->
+              <!-- </span> -->
+             <!-- <\!-- dataset Link. -\-> -->
+            <!--   <span class="link-block"> -->
+            <!--     <a href="https://github.com/google/nerfies/releases/tag/0.1" -->
+            <!--        class="external-link button is-normal is-rounded is-dark"> -->
+            <!--       <span class="icon"> -->
+            <!--           <i class="far fa-images"></i> -->
+            <!--       </span> -->
+            <!--       <span>Data</span> -->
+            <!--       </a> -->
+            <!-- </div> -->
 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-
-
-  <figure>
-     <img class="center pixelated" src="assets/images/teaser-cropped-4.png"
-          style="display:inline-block;width:150%;position:relative;right:25%"
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <img class="center pixelated" src="assets/images/teaser-cropped-4.png"
+          style="display:inline-block;width:200%;position:relative"
           onmouseover="this.src='assets/images/teaser-cropped-4.png';"
           onmouseout="this.src='assets/images/teaser-cropped-4.png';">
-     <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-       <b>Directed Diffusion (DD)</b> augments denoising diffusion text-to-image
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Directed Diffusion (DD)
+        </span>  augments denoising diffusion text-to-image
        generation by allowing the position of specified objects to be controlled
-       with user-specified bounding boxes (highlighted in red). (Left) DD
-       generates specified objects (insect robot, cat) placed according to the
-       given bounding boxes. We can move a synthesized object (middle), and
-       place multiple objects in desired locations (right). All the directed
-       objects show the appropriate ``contextual'' interaction (e.g. shadows)
-       with the background.
-     </figcaption>
-   </figure>
+       with user-specified bounding boxes highlighted in red.
+      </h2>
+    </div>
+  </div>
+</section>
 
-
-   <h3><center>Abstract</center></h3>
-
-  <p style="text-align:justify">
-   Text-guided diffusion models such as DALLE-2, Imagen, eDiff-I, and Stable
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract
+        </h2>
+        <div class="content has-text-justified">
+          <p>  Text-guided diffusion models such as DALLE-2, Imagen, eDiff-I, and Stable
    Diffusion are able to generate an effectively endless variety of images given
    only a short text prompt describing the desired image content. In many cases
    the images are of very high quality. However, these models often struggle to
@@ -513,225 +302,275 @@ div[class^='image-gallery-slide-'] {
    Directed Diffusion provides easy high-level positional control over multiple
    objects, while making use of an existing pre-trained model and maintaining a
    coherent blend between the positioned objects and the background. Moreover,
-   it requires only a few lines to implement.
-   </p>
-<!-- R25LR0 -->
+            it requires only a few lines to implement.
+          </p>
+        </div>
+      </div>
+    </div>
+</section>
 
-<!--  ____             _                                   _  -->
-<!-- | __ )  __ _  ___| | ____ _ _ __ ___  _   _ _ __   __| | -->
-<!-- |  _ \ / _` |/ __| |/ / _` | '__/ _ \| | | | '_ \ / _` | -->
-<!-- | |_) | (_| | (__|   < (_| | | | (_) | |_| | | | | (_| | -->
-<!-- |____/ \__,_|\___|_|\_\__, |_|  \___/ \__,_|_| |_|\__,_| -->
-<!--                       |___/                              -->
-<h3>Background</h3>
 
-<p style="text-align:justify">
-There are notable issues regarding scene composition in Stable Diffusion (SD). First
-of all, it is difficult to individually control different objects' appearance using the prompt.
-Second, it is not possible to control an object's location using the prompt.
-</p>
 
-Our work provides a method to direct object location in images generated with Stable Diffusion.
-This is achieved without any training or fine-tuning.
-<!-- (and potentially other text-to-image methods that use text guidance through cross attention).-->
-<p>
+<section class="section">
+  <div class="container is-max-desktop">
 
-<figure>
-  <img class="center pixelated" src="assets/images/SD-problem_v3.png" style="display:inline-block;width:100%;">
-  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    <b>SD results</b>. Prompts from left: <i>A bird landing on top of a house</i> (Note:
-    no house); <i>A bird flying over a house coming from the left</i> (Note: difficult
-    to judge the position); <i>A yellow Aston Martin DB5 on a bridge</i> (Note: no
-    bridge); <i>A yellow Aston Martin DB5 on a bridge under flocks of birds</i> (Note:
-    no bridge or birds)
-  </figcaption>
-</figure>
+    <div class="columns is-centered">
 
+      <!-- <\!-- Visual Effects. -\-> -->
+      <!-- <div class="column"> -->
+      <!--   <div class="content"> -->
+      <!--     <h2 class="title is-3">Visual Effects</h2> -->
+      <!--     <p> -->
+      <!--       Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect -->
+      <!--       would be impossible without nerfies since it would require going through a wall. -->
+      <!--     </p> -->
+      <!--     <video id="dollyzoom" autoplay controls muted loop playsinline height="100%"> -->
+      <!--       <source src="./static/videos/dollyzoom-stacked.mp4" -->
+      <!--               type="video/mp4"> -->
+      <!--     </video> -->
+      <!--   </div> -->
+      <!-- </div> -->
+      <!-- <\!--/ Visual Effects. -\-> -->
+
+      <!-- <\!-- Matting. -\-> -->
+      <!-- <div class="column"> -->
+      <!--   <h2 class="title is-3">Matting</h2> -->
+      <!--   <div class="columns is-centered"> -->
+      <!--     <div class="column content"> -->
+      <!--       <p> -->
+      <!--         As a byproduct of our method, we can also solve the matting problem by ignoring -->
+      <!--         samples that fall outside of a bounding box during rendering. -->
+      <!--       </p> -->
+      <!--       <video id="matting-video" controls playsinline height="100%"> -->
+      <!--         <source src="./static/videos/matting.mp4" -->
+      <!--                 type="video/mp4"> -->
+      <!--       </video> -->
+      <!--     </div> -->
+      <!--   </div> -->
+      <!-- </div> -->
+
+
+    </div>
+    <!--/ Matting. -->
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <!-- Core method -->
+        <h2 class="title is-3">Update
+        </h2>
+        <div class="content has-text-justified">
+         Our Directed Diffusion has been accepted and published at the <b>AAAI 2024</b> conference. We are actively working on enhancing our codebase, which is currently at the first ArXiv version. The updates are scheduled for release in <b>March 2024</b>, along with an online HuggingFace demo.
+        </div>
+        <hr class="bottom-three">
+
+        <!-- Core method -->
+        <h2 class="title is-3">Background
+        </h2>
+        <div class="content has-text-justified">
+
+        <div class="content has-text-justified">
 <p style="text-align:justify">
 DD builds on the following observation:
 The overall position and shape of a synthesized objects appears near
 the beginning of the diffusion denoising process, while the final steps do not change this
 but keep refining the details.
 </p>
+</div>
 
+<div class="content has-text-justified">
 <figure>
-  <img class="center pixelated" src="assets/images/recons.gif" style="display:inline-block;width:39%;">
-  <img class="center pixelated" src="assets/images/SD-inter-render.png" style="display:inline-block;width:59%;">
+  <img class="center" src="assets/images/recons.gif" style="display:inline-block;width:30%;">
+  <img class="center" src="assets/images/SD-inter-render.png" style="display:inline-block;width:48%;">
   <img class="center pixelated" src="assets/images/ca.gif" style="display:inline-block;width:100%;position:relative;right:0%">
   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
     Intermediate reconstructions and visualizations of prompt token cross-attention
-    maps. Prompt: <i>A cat sitting on a car.</i> (Top-left) VAE reconstruction from the
-    predicted noise at each step; (Bottom) The cross attention associated with the
-    six words in the prompt; (Top-right) The denoising progress at steps 50,40,25,0.
-    The cat's position and shape is established early in the denoising, as seen
-    in the red box at step 40;
-    (Middle-right) The initial (step 50) and final (step 0) cross-attention maps for each
-    word in the prompt.
+    maps. Prompt:
+    <i>A cat sitting on a car.
+    </i> <strong>(Top-left)</strong> VAE reconstruction from the predicted noise at each step;
+    <strong>(Bottom)</strong> The cross attention associated with the six words in the prompt;
+    <strong>(Top-right)</strong> The denoising progress at steps 50,40,25,0. The cat's position
+    and shape is established early in the denoising, as seen in the red box at
+    step 40.
   </figcaption>
 </figure>
-
-<!--     _                                     _      -->
-<!--    / \   _ __  _ __  _ __ ___   __ _  ___| |__   -->
-<!--   / _ \ | '_ \| '_ \| '__/ _ \ / _` |/ __| '_ \  -->
-<!--  / ___ \| |_) | |_) | | | (_) | (_| | (__| | | | -->
-<!-- /_/   \_\ .__/| .__/|_|  \___/ \__,_|\___|_| |_| -->
-<!--         |_|   |_|                                -->
-<h3>Approach</h3>
-
-<p style="text-align:justify">
-DD can be divided into two stages:
-<i>Attention Editing</i> and <i>Convention SD Denoising</i>.
-In the Attention Editing stage, DD directs object position by manipulating activation in
-the text guidance cross-attention layers.
-</p>
+</div>
 
 
-<p style="text-align:justify">
-Our <b>Attention Editing</b> <i>directly</i> strengthens and weakens the
+
+
+
+
+
+        <hr class="bottom-three">
+        <!-- Compositing -->
+        <h2 class="title is-3">Approach
+        </h2>
+        <div class="content has-text-justified">
+          <p>
+            DD can be divided into two stages:
+            <i>Attention Editing
+            </i> and
+            <i>Convention SD Denoising
+            </i>.
+            Our
+            <b>Attention Editing
+            </b>
+            <i>directly
+            </i> strengthens and weakens the
 activations in a specified region of selected cross-attention maps through optimization.
-<i>Trailing attention maps</i> are those that do not correspond to words in the
+            <i>Trailing attention maps
+            </i> are those that do not correspond to words in the
 prompt. These play a central role in establishing consistency between the
 subjects and the surrounding environment shown in the image. The optimal number
 of trailing attention maps are found by minimizing our objective that
 contributes the best directed object in the prompt attention maps.
 </p>
-
-<figure>
+        </div>
+        <div class="content has-text-centered">
+          <figure>
   <img class="center pixelated" src="assets/images/diagram-pipeline-v3.png" style="display:inline-block;width:100%;position:relative;right:0%">
-  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-     Directed Diffusion (DD) pipeline overview: DD divides the denoising process into initial steps where Attention
-Editing is performed, followed by refinement steps using Conventional SD Denoising. The goal of the Attention Editing
-stage is to optimize the cross attention map for a directed word (red, outlined in green) to approximately match a target
-D in which neural “activation” has been injected with a Gaussian fall-off inside a bounding box specified by the user.
-The optimization is performed by adjusting a vector (a, green) that re-weights the trailing attention maps. Note that the
-optimization objective involves successive two denosing time steps. Please see the text for details.
-  </figcaption>
+  <!-- <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;"> -->
+<!--      Directed Diffusion (DD) pipeline overview: DD divides the denoising process into initial steps where Attention -->
+<!-- Editing is performed, followed by refinement steps using Conventional SD Denoising. The goal of the Attention Editing -->
+<!-- stage is to optimize the cross attention map for a directed word (red, outlined in green) to approximately match a target -->
+<!-- D in which neural “activation” has been injected with a Gaussian fall-off inside a bounding box specified by the user. -->
+<!-- The optimization is performed by adjusting a vector (a, green) that re-weights the trailing attention maps. Note that the -->
+<!-- optimization objective involves successive two denosing time steps. Please see the text for details. -->
+<!--   </figcaption> -->
 </figure>
+        </div>
 
-</p>
 
-<!--  ____                 _ _        -->
-<!-- |  _ \ ___  ___ _   _| | |_ ___  -->
-<!-- | |_) / _ \/ __| | | | | __/ __| -->
-<!-- |  _ <  __/\__ \ |_| | | |_\__ \ -->
-<!-- |_| \_\___||___/\__,_|_|\__|___/ -->
-<h3>Key Results - One object: Four quadrants</h3>
-<p style="text-align:justify">
-  The following clip shows the directed object allocating in each of four image
-  quadrants as well as at the image center, with the directed object ``a large
-  cabin'', ``an insect robot'', and ``the sun''.
 
-</p>
-<figure>
+        <hr class="bottom-three">
+        <!-- Pipelin -->
+        <h2 class="title is-3">Key Result - One object: Four quadrants
+        </h2>
+        <div class="content has-text-justified">
+          <p>
+            The following clip shows the directed object allocating in each of
+  four image quadrants as well as at the image center, with the directed
+  object <b>a large cabin</b>, <b>an insect robot</b>, and <b>the sun</b>,
+  compared with conventional SD result shown at beginning.
+          </p>
+        </div>
+
+        <div class="content has-text-centered">
+          <figure>
 <video class="center"
-       style="display:inline-block;width:100%;position:relative;right:0%;top:-5%"
+       style="display:inline-block;width:80%;position:relative;right:0%;top:-5%"
        playsinline autoplay loop muted>
   <source src="assets/images/web-4q.mov" type="video/mp4" />
   <source src="movie.ogg" type="video/ogg" />
   Your browser does not support the video tag.
 </video>
-<figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    DD results directed by the green bounding box compared with a SD result for
-    the same prompt. Prompt: (Left) <i>“A large cabin on top of a sunny mountain
-    in the style of Dreamworks artstation.</i> (Middle) <i>An insect robot
-    preparing a delicious meal and food in the kitchen.</i> (Right) <i>The sun
-    shines on a house.</i>
-</figcaption>
+<!-- <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;"> -->
+<!--     DD results directed by the green bounding box compared with a SD result for -->
+<!--     the same prompt. Prompt: (Left) -->
+<!--     <i>“A large cabin on top of a sunny mountain -->
+<!--       in the style of Dreamworks artstation. -->
+<!--     </i> (Middle) -->
+<!--     <i>An insect robot -->
+<!--       preparing a delicious meal and food in the kitchen. -->
+<!--     </i> (Right) -->
+<!--     <i>The sun -->
+<!--       shines on a house. -->
+<!--     </i> -->
+<!-- </figcaption> -->
 </figure>
+</div>
 
 
-<!--  ___ _ _    _ _         __      ___         _ -->
-<!-- / __| (_)__| (_)_ _  __ \ \    / (_)_ _  __| |_____ __ __ -->
-<!-- \__ \ | / _` | | ' \/ _` \ \/\/ /| | ' \/ _` / _ \ V  V / -->
-<!-- |___/_|_\__,_|_|_||_\__, |\_/\_/ |_|_||_\__,_\___/\_/\_/ -->
-<!--                     |___/ -->
+        <h2 class="title is-3">Key Results - One object: Sliding window
+        </h2>
+        <div class="content has-text-justified">
+          <p>
+            The following clip shows the moving object from left to right. All
+the results are generated with a bounding box with the full image height and 40%
+of image width, with the directed object <b>A stone castle</b>, <b>A white cat</b>,
+<b>A white dog</b>, compared with conventional SD result shown at beginning.
+          </p>
+        </div>
 
-<h3>Key Results - One object: Sliding window</h3>
-<p style="text-align:justify">
-The following clip shows the moving object from left to right. All the results
-are generated with a bounding box with the full image height and 40% of image
-width, with the directed object ``A stone castle'', ``A white cat'', ``A white dog''.
-</p>
-
+        <div class="content has-text-centered">
 <figure>
 <video class="center"
-       style="display:inline-block;width:100%;position:relative;right:0%;top:-5%"
+       style="display:inline-block;width:80%;position:relative;right:0%;top:-5%"
        playsinline autoplay loop muted>
   <source src="assets/images/web-window.mov" type="video/mp4" />
   <source src="movie.ogg" type="video/ogg" />
   Your browser does not support the video tag.
 </video>
-<figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    DD results directed by the green bounding box compared with a SD result for the same prompt.
-    Prompt: (Left) <i>A stone castle surrounded by lakes and trees</i> (Middle) <i>A white cat sitting on a car.</i>
-    (Right) <i>A white dog waking on the street in the city.</i>
-</figcaption>
+<!-- <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;"> -->
+<!--     DD results directed by the green bounding box compared with a SD result for the same prompt. -->
+<!--     Prompt: (Left) -->
+<!--     <i>A stone castle surrounded by lakes and trees -->
+<!--     </i> (Middle) -->
+<!--     <i>A white cat sitting on a car. -->
+<!--     </i> -->
+<!--     (Right) -->
+<!--     <i>A white dog waking on the street in the city. -->
+<!--     </i> -->
+<!-- </figcaption> -->
 </figure>
+</div>
 
 
 
-<!--  ___ _                           _   ___ _          _ -->
-<!-- | _ \ |__ _ __ ___ _ __  ___ _ _| |_| __(_)_ _  ___| |_ _  _ _ _  ___ -->
-<!-- |  _/ / _` / _/ -_) '  \/ -_) ' \  _| _|| | ' \/ -_)  _| || | ' \/ -_) -->
-<!-- |_| |_\__,_\__\___|_|_|_\___|_||_\__|_| |_|_||_\___|\__|\_,_|_||_\___| -->
-
-<h3>Key Results - Placement Finetuning</h3>
-
-<p style="text-align:justify">
-In some cases the artist may wish to experiment with different object positions
+        <h2 class="title is-3">Key Results - Placement Finetuning
+        </h2>
+        <div class="content has-text-justified">
+          <p>
+            In some cases the artist may wish to experiment with different object positions
 after obtaining a desirable image. However, when the object’s bounding box is
-moved DD may generate a somewhat different object. Our placement finetuning (PF)
+moved DD may generate a somewhat different object. Our <b>Placement Finetuning (PF)</b>
 method addresses this problem, allowing the artist to immediately experiment
 with different positions for an object while keeping its identity, and without
 requiring any model fine-tuning or other optimization.
+          </p>
+        </div>
 
-</p>
+        <div class="content has-text-centered">
 <figure>
 <video class="center" width="1200"
-       style="display:inline-block;width:100%;position:relative;right:0%"
+       style="display:inline-block;width:90%;position:relative;right:0%"
        playsinline autoplay loop muted>
   <source src="assets/images/web-pf.mov" type="video/mp4" />
   <source src="movie.ogg" type="video/ogg" />
   Your browser does not support the video tag.
 </video>
-<figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-The following experiment compares the sliding window result shown above
-(Middle), and the placement finetuning (Right) which takes the original DD
-result as the image source (Left).
-</figcaption>
+<!-- <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;"> -->
+<!-- The following experiment compares the sliding window result shown above -->
+<!-- (Middle), and the placement finetuning (Right) which takes the original DD -->
+<!-- result as the image source (Left). -->
+<!-- </figcaption> -->
 </figure>
+</div>
 
 
 
+        <h2 class="title is-3">Key Results - Two bounding boxes
+        </h2>
+        <div class="content has-text-justified">
 
-<!--  _____            ___ -->
-<!-- |_   _|_ __ _____| _ ) _____ _____ ___ -->
-<!--   | | \ V  V / _ \ _ \/ _ \ \ / -_|_-< -->
-<!--   |_|  \_/\_/\___/___/\___/_\_\___/__/ -->
-
-<h3>Key Results - Two bounding boxes</h3>
-
-
-
-<p style="text-align:justify">
-   It is often necessary to directly control the position
-and interaction of two objects, as in the case where a character is interacting with another character or object in some
-specified environment, however control over exact placement of background environment objects is rarely necessary or
-   desirable.
-</p>
-<p style="text-align:justify">
-  "Compositionality" is a well known failure case for SD, e.g. the
+          <p style="text-align:justify">
+ <b>Compositionality</b> is a well known failure case for SD, e.g. the
   <a style="text-decoration:none;"
-  href="https://huggingface.co/CompVis/stable-diffusion-v-1-4-original">Huggingface</a>
+     href="https://huggingface.co/CompVis/stable-diffusion-v-1-4-original">Huggingface
+  </a>
   page specifically mentions the example of “A red cube on top of a blue sphere”.
   Here we use DD to successfully produce this example,
   by using two bounding boxes for the sphere and cube respectively.
 </p>
 
+        </div>
 
+        <div class="content has-text-centered">
 
 <video class="center" width="1200"
-       style="display:inline-block;width:100%;position:relative;right:0%"
+       style="display:inline-block;width:60%;position:relative;right:0%"
        playsinline autoplay loop muted>
   <source src="assets/images/web-sphere-cube.mov" type="video/mp4" />
   <source src="movie.ogg" type="video/ogg" />
@@ -739,204 +578,222 @@ specified environment, however control over exact placement of background enviro
 </video>
 
 <video class="center" width="1200"
-       style="display:inline-block;width:100%;position:relative;right:0%"
+       style="display:inline-block;width:60%;position:relative;right:0%"
        playsinline autoplay loop muted>
   <source src="assets/images/web-bear.mov" type="video/mp4" />
   <source src="movie.ogg" type="video/ogg" />
   Your browser does not support the video tag.
 </video>
-
-
-
-<h3>Comparison - Methods validation</h3>
-
-<p style="text-align:justify">
-we showcase our results alongside the results obtained from the recommended
-configurations from the BLD Avrahami et al. [2022a], and the public Composable
-Diffusion (CD) Nan et al. [2022], implementations of BoxDiff Xie et al. [2023] and GLIGEN Li et
-al. [2023].
-
-The results are picked from a list of experiments from different random seeds
-with the best-of-k image rule subjectively. Please refer to our paper and the
-appendix for more detail and the comprehensive comparisons.
-</p>
-
-<b>Scene compositionality</b>
-
-<p style="text-align:justify">
-Our results demonstrate better fidelity to the prompt (castle with fog, pond is
-dark) and less information blending between objects (e.g., church and mountain
-are not pink).
-</p>
-
-<figure>
-  <img class="center pixelated" src="assets/images/exp-app-comp-v3.png" style="display:inline-block;width:100%;position:relative;right:0%">
-  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    <b>Composition comparison</b>: Results from CD, GLIGEN, BOXDIFF, and our DD. The
-directed object is highlighted in bold in the prompt and its bounding box is
-shown in green (except for CD, which does not support position guidance). Please
-enlarge to see details including the bounding box.
-  </figcaption>
-</figure>
-
-
-<b>One-Masking interaction</b>
-
-<p style="text-align:justify">
-In our results it is evident that DD generates strong and realistic interactions
-between the directed object and the background, including the man touching the
-gravestone, the shadows cast on the grass, the occlusion of the volcano by the
-horse. Oh no, the man’s hand that catches on fire :)
-</p>
-
-<figure>
-  <img class="center pixelated" src="assets/images/exp-app-mask-v3.png" style="display:inline-block;width:100%;position:relative;right:0%">
-  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-    <b>Masking comparison</b>:  Results from CD, GLIGEN, BOXDIFF, and our DD. The
-directed object is highlighted in bold in the prompt and its bounding box is
-shown in green (except for CD, which does not support position guidance). Please
-enlarge to see details including the bounding box. BLD images are reproduced
-from Avrahami et al. [2022a].
-  </figcaption>
-</figure>
-
-
-<h3>Comparison: Object interaction from prompt verbs</h3>
-
-The following figure showcases the ability of DD to (sometimes) convey
-interaction between objects. The figure compares two prompts: "A white dog and a
-red ball" and "A white dog chasing a red ball." While both results show the
-white dog and red ball consistently, it is evident that the “chasing” prompt
-better conveys the action of this verb, e.g. the dog is running rather than
-sitting.
-
-<figure>
-  <img class="center pixelated" src="assets/images/exp-chasing.jpg" style="display:inline-block;width:100%;position:relative;right:0%">
-  <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;">
-   Results of the prompt “a white dog S* a red ball”, where the token S* is
-replaced by “and” or “chasing” in the first row and second row, respectively. In
-the second row the dog more frequently appears to be running rather than
-sitting, consistent with the verb “chasing”. Note the results of each column
-share the same random seed.
-  </figcaption>
-</figure>
+</div>
 
 
 
 
+<!--         <h3>Comparison - Methods validation -->
+<!--         </h3> -->
+
+<!-- <p style="text-align:justify"> -->
+<!-- we showcase our results alongside the results obtained from the recommended -->
+<!-- configurations from the BLD Avrahami et al. [2022a], and the public Composable -->
+<!-- Diffusion (CD) Nan et al. [2022], implementations of BoxDiff Xie et al. [2023] and GLIGEN Li et -->
+<!-- al. [2023]. -->
+
+<!-- The results are picked from a list of experiments from different random seeds -->
+<!-- with the best-of-k image rule subjectively. Please refer to our paper and the -->
+<!-- appendix for more detail and the comprehensive comparisons. -->
+<!-- </p> -->
+
+<!-- <b>Scene compositionality -->
+<!-- </b> -->
+
+<!-- <p style="text-align:justify"> -->
+<!-- Our results demonstrate better fidelity to the prompt (castle with fog, pond is -->
+<!-- dark) and less information blending between objects (e.g., church and mountain -->
+<!-- are not pink). -->
+<!-- </p> -->
+
+<!-- <figure> -->
+<!--   <img class="center pixelated" src="assets/images/exp-app-comp-v3.png" style="display:inline-block;width:100%;position:relative;right:0%"> -->
+<!--   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;"> -->
+<!--     <b>Composition comparison -->
+<!--     </b>: Results from CD, GLIGEN, BOXDIFF, and our DD. The -->
+<!-- directed object is highlighted in bold in the prompt and its bounding box is -->
+<!-- shown in green (except for CD, which does not support position guidance). Please -->
+<!-- enlarge to see details including the bounding box. -->
+<!--   </figcaption> -->
+<!-- </figure> -->
 
 
-<!--   ___         _       _ _         _   _ -->
-<!--  / __|___ _ _| |_ _ _(_) |__ _  _| |_(_)___ _ _ -->
-<!-- | (__/ _ \ ' \  _| '_| | '_ \ || |  _| / _ \ ' \ -->
-<!--  \___\___/_||_\__|_| |_|_.__/\_,_|\__|_\___/_||_| -->
-<h3>Contribution</h3>
-<p style="margin-bottom: 4%; margin-top: -2%">
+<!-- <b>One-Masking interaction -->
+<!-- </b> -->
+
+<!-- <p style="text-align:justify"> -->
+<!-- In our results it is evident that DD generates strong and realistic interactions -->
+<!-- between the directed object and the background, including the man touching the -->
+<!-- gravestone, the shadows cast on the grass, the occlusion of the volcano by the -->
+<!-- horse. Oh no, the man’s hand that catches on fire :) -->
+<!-- </p> -->
+
+<!-- <figure> -->
+<!--   <img class="center pixelated" src="assets/images/exp-app-mask-v3.png" style="display:inline-block;width:100%;position:relative;right:0%"> -->
+<!--   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;"> -->
+<!--     <b>Masking comparison -->
+<!--     </b>:  Results from CD, GLIGEN, BOXDIFF, and our DD. The -->
+<!-- directed object is highlighted in bold in the prompt and its bounding box is -->
+<!-- shown in green (except for CD, which does not support position guidance). Please -->
+<!-- enlarge to see details including the bounding box. BLD images are reproduced -->
+<!-- from Avrahami et al. [2022a]. -->
+<!--   </figcaption> -->
+<!-- </figure> -->
+
+
+<!-- <h3>Comparison: Object interaction from prompt verbs -->
+<!-- </h3> -->
+
+<!-- The following figure showcases the ability of DD to (sometimes) convey -->
+<!-- interaction between objects. The figure compares two prompts: "A white dog and a -->
+<!-- red ball" and "A white dog chasing a red ball." While both results show the -->
+<!-- white dog and red ball consistently, it is evident that the “chasing” prompt -->
+<!-- better conveys the action of this verb, e.g. the dog is running rather than -->
+<!-- sitting. -->
+
+<!-- <figure> -->
+<!--   <img class="center pixelated" src="assets/images/exp-chasing.jpg" style="display:inline-block;width:100%;position:relative;right:0%"> -->
+<!--   <figcaption style="margin-top: 0; margin-bottom: 0; text-align: left;"> -->
+<!--    Results of the prompt “a white dog S* a red ball”, where the token S* is -->
+<!-- replaced by “and” or “chasing” in the first row and second row, respectively. In -->
+<!-- the second row the dog more frequently appears to be running rather than -->
+<!-- sitting, consistent with the verb “chasing”. Note the results of each column -->
+<!-- share the same random seed. -->
+<!--   </figcaption> -->
+<!-- </figure> -->
+
+<hr class="bottom-three">
+  <h2 class="title is-3">Limitations
+  </h2>
+        <div class="content has-text-justified">
+          <p style="text-align:justify">
+            While Directed Diffusion can be used to address Stable Diffusion's problem with composing multiple objects, it inherits Stable Diffusion's other limitations -- in particular the need for experimentation with prompts and hyperparameters.
+            <a href="https://www.forbes.com/sites/tjmccue/2023/02/23/mind-bending-midjourney-ai-art-and-images-from-simple-prompts/amp">
+              <i>"This is the thing with AI tools right now - it takes a ton of time and a willingness to keep experimenting."
+              </i>
+            </a>
+            In practice our method would be used in conjunction with other algorithms such as Dreambooth. The examples in the paper do not make use of these other algorithms in order to provide a stand-alone evaluation of our algorithm.
+          </p>
+        </div>
+
+
+
+        <h2 class="title is-3">Societal Impact
+        </h2>
+        <div class="content has-text-justified">
+          <p style="text-align:justify">
+            The aim of this project is to extend the capability of text-to-image
+models to visual storytelling. In common with most other technologies, there is
+potential for misuse. In particular, generative models reflect the biases of
+their training data, and there is a risk that malicious parties can use
+text-to-image methods to generate misleading images. The authors believe that it
+is important that these risks be addressed. This might be done by penalizing
+malicious behavior though the introduction of appropriate laws, or by limiting
+the capabilities of generative models to serve this behavior.
+          </p>
+        </div>
+
+
+        <h2 class="title is-3">Contribution
+        </h2>
+<div class="content has-text-justified">
 We summarize the contributions of Directed Diffusion:
 <ul>
-  <li> <b>Storytelling</b>: Our method is a first step towards storytelling by providing consistent control over the positioning of multiple objects. </li>
-  <li> <b>Compositionality</b>: It provides an alternate and direct approach to ''compositionality'' by providing explicit positional control. </li>
-  <li> <b>Consistency</b>: The positioned objects seamlessly and consistently
+  <li>
+    <b>Storytelling
+    </b>: Our method is a first step towards storytelling by providing consistent control over the positioning of multiple objects.
+  </li>
+  <li>
+    <b>Compositionality
+    </b>: It provides an alternate and direct approach to ''compositionality'' by providing explicit positional control.
+  </li>
+  <li>
+    <b>Consistency
+    </b>: The positioned objects seamlessly and consistently
     fit in the environment, rather than appearing as a splice from another image
 with inconsistent interaction (shadows, lighting, etc.) This consistency is due
-to two factors. First, we use a simple bounding box to position and allow the
-denoising diffusion process to fill in the details, whereas specifying position
-with a pixel-space mask runs the risk that it may be inconsistent with the shape
-and position implicit in the early denoising results. Second, subsequent
-diffusion steps operate on the entire image and seamlessly produce consistent
-lighting, etc.</li>
-  <li> <b>Simplicity</b>: Image editing methods for text-to-image models often
-require detailed masks, depth maps, or other precise guidance information. This
-information is not available when synthesizing images ab initio, and it would be
-    laborious to create. Our method allows the user to control the desired locations
-of objects simply by specifying approximate bounding boxes. From a computational
-point of view, our method requires no training or fine tuning, and can be added
-to an existing text-driven diffusion model with cross-attention guidance with
-only a few lines of code. It requires a simple optimization of a small weight
-vector $\mathbf{a} ∈ \mathbb{R}^d$, $d < 77$, which does not significantly
-increase the overall synthesis time. </li>
+to two factors.
+  </li>
+  <li>
+    <b>Simplicity
+    </b>: From a computational point of view, our method requires no training or
+fine tuning, and can be added to an existing text-driven diffusion model with
+cross-attention guidance with only a few lines of code. It requires a simple
+    optimization of a small weight vector $\mathbf{a} ∈ \mathbb{R}^d$, $d
+    < 77$,
+which does not significantly increase the overall synthesis time. </li>
 </ul>
 </p>
+</div>
 
-
-
-<!--  _    _       _ _        _   _ -->
-<!-- | |  (_)_ __ (_) |_ __ _| |_(_)___ _ _ -->
-<!-- | |__| | '  \| |  _/ _` |  _| / _ \ ' \ -->
-<!-- |____|_|_|_|_|_|\__\__,_|\__|_\___/_||_| -->
-<h3>Limitations</h3>
-<p style="text-align:justify">
-While Directed Diffusion can be used to address Stable Diffusion's problem with composing multiple objects, it inherits Stable Diffusion's other limitations -- in particular the need for experimentation with prompts and hyperparameters.
-<a href="https://www.forbes.com/sites/tjmccue/2023/02/23/mind-bending-midjourney-ai-art-and-images-from-simple-prompts/amp">
-<i>"This is the thing with AI tools right now - it takes a ton of time and a willingness to keep experimenting."</i></a>
-In practice our method would be used in conjunction with other algorithms such as Dreambooth. The examples in the paper do not make use of these other algorithms in order to provide a stand-alone evaluation of our algorithm.
-</p>
-
-
-<h3>Societal Impact</h3>
-<p style="text-align:justify">
-The aim of this project is to extend the capability of text-to-image models to
-visual storytelling. In common with most other technologies, there is potential
-for misuse. In particular, generative models reflect the biases of their
-training data, and there is a risk that malicious parties can use text-to-image
-methods to generate misleading images. The authors believe that it is important
-that these risks be addressed. This might be done by penalizing malicious
-behavior though the introduction of appropriate laws, or by limiting the
-capabilities of generative models to serve this behavior.
-</p>
-
-
-
-<!--   ___         _ -->
-<!--  / __|___  __| |___ -->
-<!-- | (__/ _ \/ _` / -_) -->
-<!--  \___\___/\__,_\___| -->
-
-<h3>Code</h3>
-<p style="text-align:justify">
-Our public implementation
-(Github: <a href="https://github.com/hohonu-vicml/DirectedDiffusion">link</a>) is
-still associated with our first ArXiv version (DD ArXiv v1:
-<a href="https://arxiv.org/abs/2302.13153v1">link</a>). This version has the
-core method injecting the Gaussian weight map into the cross-attention map as
-one of our main motivation in the paper. We will soon provide the online demo
-through Huggingface Space and sync with the latest paper version in the near future. Feel free to contact us if you
-have comments and suggestions!
-<!-- Additionally, we also released an online demo app on Huggingface Space running on A10 GPU (<a href="https://huggingface.co/spaces/hohonu-vicml/DirectedDiffusion">link</a>). -->
-</p>
-
-
-<h3>Acknowledgements</h3>
-<p style="text-align:justify">
+<h2 class="title is-3">Acknowledgements
+</h2>
+<div class="content has-text-justified">
+<p>
 We thank Jason Baldridge, and the anonymous reviewers for helpful feedback. We
 also thank Huggingface public project Diffusers providing efficient and reliable
 experiments.
 </p>
+</div>
 
-<!--   ___ _ _        _   _ -->
-<!--  / __(_) |_ __ _| |_(_)___ _ _ -->
-<!-- | (__| |  _/ _` |  _| / _ \ ' \ -->
-<!--  \___|_|\__\__,_|\__|_\___/_||_| -->
+<h2 class="title is-3">Citation
+</h2>
+<div class="content has-text-justified">
+ <p>
+            If you find our <span class="dnerf">DirectedDiffusion</span> interesting,
+            please consider citing our article.
+          </p>
+</div>
+</section>
 
-<h3>Citation</h3>
-<p style="text-align:justify">
-  For more details and additional results, <a href="https://arxiv.org/abs/2302.13153" style="text-decoration:none">read the full paper</a>.
-</p>
-<code>
-  @misc{ma2023directed,<br/>
-  <div style="padding-left: 5%; margin: 0">
-      title={Directed Diffusion: Direct Control of Object Placement through Attention Guidance},<br/>
-      author={Wan-Duo Kurt Ma and J. P. Lewis and Avisek Lahiri and W. Bastiaan Kleijn and Thomas Leung},<br/>
-      year={2023},<br/>
-      eprint={2302.13153},<br/>
-      archivePrefix={arXiv},<br/>
-      primaryClass={cs.CV}<br/>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @misc{ma2023directed,
+          title={Directed Diffusion: Direct Control of Object Placement through Attention Guidance},
+          author={Wan-Duo Kurt Ma and J. P. Lewis and Avisek Lahiri and Thomas Leung and W. Bastiaan Kleijn},
+          year={2023},
+          eprint={2302.13153},
+          archivePrefix={arXiv},
+          primaryClass={cs.CV}
+      }
+    </code></pre>
   </div>
-  }<br/>
-</code>
+</section>
 
-<span style="margin-bottom: 10%"></span>
-</d-article>
 
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/hohonu-vicml" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website utilizes the page template developed by
+            the <a href="https://nerfies.github.io">Nerfies</a> team. The
+            authors extend their appreciation for their diligent efforts in
+            creating this highly flexible and high-quality work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
+</html>
